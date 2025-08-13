@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Counter } from "./components/counter/Counter";
+
+import Agreements from "@/components/HomePage/Agreements";
 
 export default function IndexPage() {
-  return <Counter />;
+  return (
+    <div>
+      <Agreements />
+    </div>
+  )
 }
 
 export const metadata: Metadata = {
-  title: "Redux Toolkit",
+  title: "Jooter Applications",
+  
 };

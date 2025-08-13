@@ -1,0 +1,167 @@
+{
+  "info": {
+    "name": "SaaS File Manager API",
+    "_postman_id": "6d68a5e4-44ab-4a10-a3f4-23b123d4b99b",
+    "description": "Postman collection for SaaS File Manager API built with Next.js API routes, Express, and MongoDB.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/auth/signup", "host": ["{{base_url}}"], "path": ["api", "auth", "signup"] },
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\",\n  \"confirmPassword\": \"123456\"\n}" }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/auth/login", "host": ["{{base_url}}"], "path": ["api", "auth", "login"] },
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"123456\"\n}" }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{base_url}}/api/auth/logout", "host": ["{{base_url}}"], "path": ["api", "auth", "logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/user/profile", "host": ["{{base_url}}"], "path": ["api", "user", "profile"] } }
+        },
+        {
+          "name": "Update Username",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/user/update-username", "host": ["{{base_url}}"], "path": ["api", "user", "update-username"] },
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"NewName\"\n}" }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/user/change-password", "host": ["{{base_url}}"], "path": ["api", "user", "change-password"] },
+            "body": { "mode": "raw", "raw": "{\n  \"oldPassword\": \"123456\",\n  \"newPassword\": \"abcdef\"\n}" }
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/user/delete-account", "host": ["{{base_url}}"], "path": ["api", "user", "delete-account"] } }
+        }
+      ]
+    },
+    {
+      "name": "Files & Folders",
+      "item": [
+        {
+          "name": "Upload File/Note/PDF/Image",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/files/upload", "host": ["{{base_url}}"], "path": ["api", "files", "upload"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"My Note\",\n  \"type\": \"note\",\n  \"size\": 200,\n  \"folderId\": \"\"\n}" }
+          }
+        },
+        {
+          "name": "Create Folder",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/folders/create", "host": ["{{base_url}}"], "path": ["api", "folders", "create"] },
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"New Folder\"\n}" }
+          }
+        },
+        {
+          "name": "Favorite File/Folder",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/files/favorite", "host": ["{{base_url}}"], "path": ["api", "files", "favorite"] },
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"file_or_folder_id\"\n}" }
+          }
+        },
+        {
+          "name": "Rename File/Folder",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/files/rename", "host": ["{{base_url}}"], "path": ["api", "files", "rename"] },
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"file_or_folder_id\",\n  \"newName\": \"Updated Name\"\n}" }
+          }
+        },
+        {
+          "name": "Duplicate File",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/api/files/duplicate", "host": ["{{base_url}}"], "path": ["api", "files", "duplicate"] },
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"file_id\"\n}" }
+          }
+        },
+        {
+          "name": "Get File Details",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/files/details/:id", "host": ["{{base_url}}"], "path": ["api", "files", "details", ":id"] } }
+        },
+        {
+          "name": "Delete File/Folder",
+          "request": { "method": "DELETE", "url": { "raw": "{{base_url}}/api/files/delete/:id", "host": ["{{base_url}}"], "path": ["api", "files", "delete", ":id"] } }
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Storage Stats",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/storage/stats", "host": ["{{base_url}}"], "path": ["api", "storage", "stats"] } }
+        },
+        {
+          "name": "Recent Activities",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/files/recent", "host": ["{{base_url}}"], "path": ["api", "files", "recent"] } }
+        },
+        {
+          "name": "Search Files/Folders",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/search?q=keyword", "host": ["{{base_url}}"], "path": ["api", "search"], "query": [{ "key": "q", "value": "keyword" }] } }
+        },
+        {
+          "name": "Get User Folders",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/folders/user", "host": ["{{base_url}}"], "path": ["api", "folders", "user"] } }
+        },
+        {
+          "name": "Get User Files",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/files/user", "host": ["{{base_url}}"], "path": ["api", "files", "user"] } }
+        },
+        {
+          "name": "Get User Notes",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/notes/user", "host": ["{{base_url}}"], "path": ["api", "notes", "user"] } }
+        },
+        {
+          "name": "Get User PDFs",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/pdfs/user", "host": ["{{base_url}}"], "path": ["api", "pdfs", "user"] } }
+        },
+        {
+          "name": "Get Favorites",
+          "request": { "method": "GET", "url": { "raw": "{{base_url}}/api/files/favorites", "host": ["{{base_url}}"], "path": ["api", "files", "favorites"] } }
+        }
+      ]
+    }
+  ],
+  "variable": [{ "key": "base_url", "value": "http://localhost:3000" }]
+}
